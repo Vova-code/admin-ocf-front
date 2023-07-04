@@ -9,9 +9,9 @@ export default function Login() {
   return (
     <AuthPage
       type="login"
-      formProps={{
-        defaultValues: { email: "demo@refine.dev", password: "demodemo" },
-      }}
+      rememberMe={false}
+      forgotPasswordLink={false}
+      registerLink={false}
       title={
         <ThemedTitleV2
           collapsed={false}
