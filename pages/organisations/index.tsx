@@ -8,7 +8,7 @@ import IOrganisation from "../../src/interfaces/resources";
 import {Skeleton} from "@mui/material";
 
 export default function OrganisationsList() {
-    const { dataGridProps } = useDataGrid<IOrganisation>()
+    const {dataGridProps} = useDataGrid<IOrganisation>()
 
     const columns = React.useMemo<GridColDef<IOrganisation>[]>(
         () => [
@@ -27,7 +27,7 @@ export default function OrganisationsList() {
                 field: "groups",
                 headerName: "Groupes",
                 type: "number",
-                renderCell: ({ row }) => {
+                renderCell: ({row}) => {
                     return row.groups?.length
                 },
                 flex: 1
@@ -35,11 +35,11 @@ export default function OrganisationsList() {
             {
                 field: "actions",
                 headerName: "Actions",
-                renderCell: function render({ row }) {
+                renderCell: function render({row}) {
                     return (
                         <>
-                            <EditButton size="small" recordItemId={row.id} hideText />
-                            <ShowButton size="small" recordItemId={row.id} hideText />
+                            <EditButton size="small" recordItemId={row.id} hideText/>
+                            <ShowButton size="small" recordItemId={row.id} hideText/>
                         </>
                     );
                 },
@@ -54,21 +54,19 @@ export default function OrganisationsList() {
     return (
         <List
             resource="organisations"
-            createButtonProps={{ size: "small" }}
+            createButtonProps={{size: "small"}}
             canCreate
         >
-            <Suspense fallback={<Skeleton animation="wave"/>}>
-                <DataGrid
-                    {...dataGridProps}
-                    columns={columns}
-                    autoHeight
-                />
-            </Suspense>
+            <DataGrid
+                {...dataGridProps}
+                columns={columns}
+                autoHeight
+            />
         </List>
     );
 }
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
-    const { authenticated, redirectTo } = await authProvider.check(context);
+    const {authenticated, redirectTo} = await authProvider.check(context);
 
     const translateProps = await serverSideTranslations(context.locale ?? "fr", [
         "common",

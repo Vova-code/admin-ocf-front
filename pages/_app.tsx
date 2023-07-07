@@ -1,29 +1,19 @@
-import { GitHubBanner, Refine } from "@refinedev/core";
-import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
-import {
-  notificationProvider,
-  RefineSnackbarProvider,
-  ThemedLayoutV2,
-  ThemedTitleV2,
-} from "@refinedev/mui";
-import routerProvider, {
-  DocumentTitleHandler,
-  UnsavedChangesNotifier,
-} from "@refinedev/nextjs-router";
-import type { NextPage } from "next";
-import { AppProps } from "next/app";
+import {Refine} from "@refinedev/core";
+import {RefineKbar, RefineKbarProvider} from "@refinedev/kbar";
+import {notificationProvider, RefineSnackbarProvider, ThemedLayoutV2, ThemedTitleV2,} from "@refinedev/mui";
+import routerProvider, {DocumentTitleHandler, UnsavedChangesNotifier,} from "@refinedev/nextjs-router";
+import type {NextPage} from "next";
+import {AppProps} from "next/app";
 
-import { Header } from "@components/header";
-import { ColorModeContextProvider } from "@contexts";
+import {Header} from "@components/header";
+import {ColorModeContextProvider} from "@contexts";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
-import dataProvider from "@refinedev/simple-rest";
-import { appWithTranslation, useTranslation } from "next-i18next";
-import { authProvider } from "../src/providers/authProvider";
-import { AppIcon } from "src/components/app-icon";
+import {appWithTranslation, useTranslation} from "next-i18next";
+import {authProvider} from "../src/providers/authProvider";
+import {AppIcon} from "src/components/app-icon";
 import {postgresDataProvider} from "../src/providers/postgresDataProvider";
-
-const LOCAL_API_URL: string = "http://localhost:8000/api/v1";
+import {getApiURL} from "../src/utils/api";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   noLayout?: boolean;
@@ -32,11 +22,6 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
-
-const getApiURL = (): string => {
-  // @ts-ignore
-  return process.env.API_URL
-}
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
   const renderComponent = () => {

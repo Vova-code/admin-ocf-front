@@ -1,6 +1,7 @@
 import axios from "axios";
 import {DataProvider, HttpError} from "@refinedev/core";
 import nookies from "nookies";
+import {getApiURL} from "../utils/api";
 
 const axiosInstance = axios.create()
 
@@ -96,5 +97,7 @@ export const postgresDataProvider = (apiUrl: string): DataProvider => ({
 
         return {data}
     },
-    getApiUrl: () => apiUrl
+    getApiUrl: () => {
+        return getApiURL()
+    }
 });
