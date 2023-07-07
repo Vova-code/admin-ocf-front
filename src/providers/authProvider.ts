@@ -8,34 +8,34 @@ const OFFLINE_API_URL: string = "http://172.26.160.1:8000/api/v1"
 export const authProvider: AuthBindings = {
     login: async ({email, password}) => {
 
-        return {
-            success: true,
-            redirectTo: "/organisations",
+        // return {
+        //     success: true,
+        //     redirectTo: "/organisations",
+        // }
+
+        const response = await axios.post(LOCAL_API_URL + "/login/", {email, password});
+
+        if (response.status === 200) {
+            const { data } = response
+            nookies.set(null, "auth", JSON.stringify(data?.token), {
+                maxAge: 60 * 60,
+                path: "/",
+            });
+
+            localStorage.setItem("refresh", data?.refresh_token)
+            return {
+                success: true,
+                redirectTo: "/organisations",
+            }
         }
 
-        // const response = await axios.post(LOCAL_API_URL + "/login/", {email, password});
-        //
-        // if (response.status === 200) {
-        //     const { data } = response
-        //     nookies.set(null, "auth", JSON.stringify(data?.token), {
-        //         maxAge: 60 * 60,
-        //         path: "/",
-        //     });
-        //
-        //     localStorage.setItem("refresh", data?.refresh_token)
-        //     return {
-        //         success: true,
-        //         redirectTo: "/organisations",
-        //     }
-        // }
-        //
-        // return {
-        //     success: false,
-        //     error: {
-        //         name: "LoginError",
-        //         message: "Invalid username or password",
-        //     },
-        // }
+        return {
+            success: false,
+            error: {
+                name: "LoginError",
+                message: "Invalid username or password",
+            },
+        }
     },
     logout: async () => {
         nookies.destroy(null, "auth");

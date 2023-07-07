@@ -33,6 +33,11 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
+const getApiURL = (): string => {
+  // @ts-ignore
+  return process.env.API_URL
+}
+
 function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
   const renderComponent = () => {
     if (Component.noLayout) {
@@ -72,7 +77,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
           <RefineSnackbarProvider>
             <Refine
               routerProvider={routerProvider}
-              dataProvider={postgresDataProvider(LOCAL_API_URL)}
+              dataProvider={postgresDataProvider(getApiURL())}
               notificationProvider={notificationProvider}
               authProvider={authProvider}
               i18nProvider={i18nProvider}
