@@ -125,6 +125,20 @@
       "show": "Show Blog Post"
     }
   },
+  "organisations": {
+    "organisations": "Organisations",
+    "fields": {
+      "id": "Id",
+      "name": "Name",
+      "groups": "Groups"
+    },
+    "titles": {
+      "create": "Create Organisation",
+      "edit": "Edit Organisation",
+      "list": "List Organisations",
+      "show": "Show Organisations"
+    }
+  },
   "categories": {
     "categories": "Categories",
     "fields": {
@@ -140,8 +154,8 @@
     }
   },
   "documentTitle": {
-    "default": "refine",
-    "suffix": " | refine",
+    "default": "Open Course",
+    "suffix": " | OCF",
     "blog_posts": {
       "list": "Blog Posts | refine",
       "show": "#{{id}} Show Blog Post | refine",
@@ -155,6 +169,13 @@
       "edit": "#{{id}} Edit Category | refine",
       "create": "Create new Category | refine",
       "clone": "#{{id}} Clone Category | refine"
+    },
+    "organisations": {
+      "list": "Organisations | OCF",
+      "show": "#{{id}} Show Organisation | OCF",
+      "edit": "#{{id}} Edit Organisation | OCF",
+      "create": "Create Organisation | OCF",
+      "clone": "#{{id}} Clone Organisation | OCF"
     }
   },
   "table": {

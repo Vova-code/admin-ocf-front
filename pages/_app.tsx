@@ -19,10 +19,11 @@ import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import dataProvider from "@refinedev/simple-rest";
 import { appWithTranslation, useTranslation } from "next-i18next";
-import { authProvider } from "src/authProvider";
+import { authProvider } from "../src/providers/authProvider";
 import { AppIcon } from "src/components/app-icon";
+import {postgresDataProvider} from "../src/providers/postgresDataProvider";
 
-const API_URL = "https://api.fake-rest.refine.dev";
+const LOCAL_API_URL: string = "http://localhost:8000/api/v1";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   noLayout?: boolean;
@@ -71,27 +72,27 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
           <RefineSnackbarProvider>
             <Refine
               routerProvider={routerProvider}
-              dataProvider={dataProvider(API_URL)}
+              dataProvider={postgresDataProvider(LOCAL_API_URL)}
               notificationProvider={notificationProvider}
               authProvider={authProvider}
               i18nProvider={i18nProvider}
               resources={[
                 {
-                  name: "blog_posts",
-                  list: "/blog-posts",
-                  create: "/blog-posts/create",
-                  edit: "/blog-posts/edit/:id",
-                  show: "/blog-posts/show/:id",
+                  name: "organisations",
+                  list: "/organisations",
+                  create: "/organisations/create",
+                  edit: "/organisations/edit/:id",
+                  show: "/organisations/show/:id",
                   meta: {
                     canDelete: true,
                   },
                 },
                 {
-                  name: "categories",
-                  list: "/categories",
-                  create: "/categories/create",
-                  edit: "/categories/edit/:id",
-                  show: "/categories/show/:id",
+                  name: "groups",
+                  list: "/groups",
+                  create: "/groups/create",
+                  edit: "/groups/edit/:id",
+                  show: "/groups/show/:id",
                   meta: {
                     canDelete: true,
                   },

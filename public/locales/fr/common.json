@@ -4,7 +4,6 @@
       "title": "Connectez vous à votre compte",
       "signin": "Connexion",
       "signup": "Inscription",
-      "divider": "or",
       "fields": {
         "email": "Email",
         "password": "Mot de passe"
@@ -66,7 +65,7 @@
     }
   },
   "actions": {
-    "list": "List",
+    "list": "Lister",
     "create": "Créer",
     "edit": "Editer",
     "show": "Voir"
@@ -125,6 +124,20 @@
       "show": "Show Blog Post"
     }
   },
+  "organisations": {
+    "organisations": "Organisations",
+    "fields": {
+      "id": "Id",
+      "name": "Nom",
+      "groups": "Groupes"
+    },
+    "titles": {
+      "create": "Créer une organisation",
+      "edit": "Modifier l'organisation",
+      "list": "Vos Organisations",
+      "show": "Voir l'organisation"
+    }
+  },
   "categories": {
     "categories": "Categories",
     "fields": {
@@ -140,8 +153,8 @@
     }
   },
   "documentTitle": {
-    "default": "refine",
-    "suffix": " | refine",
+    "default": "Open Course",
+    "suffix": " | OCF",
     "blog_posts": {
       "list": "Blog Posts | refine",
       "show": "#{{id}} Show Blog Post | refine",
@@ -155,6 +168,13 @@
       "edit": "#{{id}} Edit Category | refine",
       "create": "Create new Category | refine",
       "clone": "#{{id}} Clone Category | refine"
+    },
+    "organisations": {
+      "list": "Organisations | OCF",
+      "show": "#{{id}} Voir l'Organisation | OCF",
+      "edit": "#{{id}} Modifier | OCF",
+      "create": "Création d'Organisation | OCF",
+      "clone": "#{{id}} Cloner l'Organisation | OCF"
     }
   },
   "table": {

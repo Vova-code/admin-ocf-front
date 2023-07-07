@@ -2,7 +2,7 @@ import { AuthPage, ThemedTitleV2 } from "@refinedev/mui";
 
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { authProvider } from "src/authProvider";
+import { authProvider } from "../../src/providers/authProvider";
 import { AppIcon } from "src/components/app-icon";
 
 export default function Login() {

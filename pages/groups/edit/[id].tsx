@@ -3,14 +3,14 @@ import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { authProvider } from "../../../src/providers/authProvider";
 
-export default function CategoryEdit() {
-  return <MuiEditInferencer />;
+export default function GroupsEdit() {
+  return <MuiEditInferencer hideCodeViewerInProduction />;
 }
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
   const { authenticated, redirectTo } = await authProvider.check(context);
 
-  const translateProps = await serverSideTranslations(context.locale ?? "en", [
+  const translateProps = await serverSideTranslations(context.locale ?? "fr", [
     "common",
   ]);
 
@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
         ...translateProps,
       },
       redirect: {
-        destination: `${redirectTo}?to=${encodeURIComponent("/categories")}`,
+        destination: `${redirectTo}?to=${encodeURIComponent("/groups")}`,
         permanent: false,
       },
     };

@@ -29,6 +29,27 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
 
   const { data: user } = useGetIdentity<IUser>();
 
+  const getLang = (lang: string) => {
+      switch (lang) {
+          case "fr":
+              return "https://flagsapi.com/FR/flat/64.png";
+          case "en":
+              return "https://flagsapi.com/GB/flat/64.png";
+          case "de":
+              return "https://flagsapi.com/DE/flat/64.png";
+      }
+    }
+  const getTypo = (lang: string) => {
+      switch (lang) {
+          case "fr":
+              return "Français";
+          case "en":
+              return "English";
+          case "de":
+              return "German";
+      }
+    }
+
   return (
     <AppBar position={sticky ? "sticky" : "relative"}>
       <Toolbar>
@@ -82,10 +103,10 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
                           height: "24px",
                           marginRight: "5px",
                         }}
-                        src={`/images/flags/${lang}.svg`}
+                        src={getLang(lang)}
                       />
                       <Typography>
-                        {lang === "en" ? "English" : "German"}
+                        {getTypo(lang)}
                       </Typography>
                     </Stack>
                   </MenuItem>
