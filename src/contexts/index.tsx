@@ -8,8 +8,10 @@ import React, {
   useEffect,
   useState,
 } from "react";
+import {getApiURL} from "../utils/api";
 
 type ColorModeContextType = {
+  apiUrl: string,
   mode: string;
   setMode: () => void;
 };
@@ -23,8 +25,11 @@ export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
 }) => {
   const [isMounted, setIsMounted] = useState(false);
   const [mode, setMode] = useState("light");
+  const [apiUrl, setApiUrl] = useState("")
 
   useEffect(() => {
+    const apiURL = getApiURL();
+    setApiUrl(apiURL)
     setIsMounted(true);
   }, []);
 
@@ -48,6 +53,7 @@ export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
       value={{
         setMode: toggleTheme,
         mode,
+        apiUrl,
       }}
     >
       <ThemeProvider

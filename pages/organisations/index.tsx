@@ -2,10 +2,9 @@ import {GetServerSideProps} from "next";
 import {authProvider} from "../../src/providers/authProvider";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {EditButton, List, ShowButton, useDataGrid} from "@refinedev/mui";
-import React, {Suspense} from "react";
+import React from "react";
 import {DataGrid, GridColDef} from "@mui/x-data-grid";
 import IOrganisation from "../../src/interfaces/resources";
-import {Skeleton} from "@mui/material";
 
 export default function OrganisationsList() {
     const {dataGridProps} = useDataGrid<IOrganisation>()

@@ -2,6 +2,7 @@ import {AuthBindings} from "@refinedev/core";
 import nookies from "nookies";
 import axios from "axios";
 import {getApiURL} from "../utils/api";
+import process from "process";
 
 export const authProvider: AuthBindings = {
     login: async ({email, password}) => {
@@ -11,7 +12,7 @@ export const authProvider: AuthBindings = {
         //     redirectTo: "/organisations",
         // }
 
-        const response = await axios.post(getApiURL() + "/login/", {email, password});
+        const response = await axios.post("http://localhost:8000/api/v1/login/", {email, password});
 
         if (response.status === 200) {
             const { data } = response

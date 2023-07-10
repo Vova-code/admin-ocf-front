@@ -6,14 +6,14 @@ import type {NextPage} from "next";
 import {AppProps} from "next/app";
 
 import {Header} from "@components/header";
-import {ColorModeContextProvider} from "@contexts";
+import {ColorModeContext, ColorModeContextProvider} from "@contexts";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import {appWithTranslation, useTranslation} from "next-i18next";
 import {authProvider} from "../src/providers/authProvider";
 import {AppIcon} from "src/components/app-icon";
 import {postgresDataProvider} from "../src/providers/postgresDataProvider";
-import {getApiURL} from "../src/utils/api";
+import {useContext} from "react";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   noLayout?: boolean;
@@ -23,7 +23,10 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
+const API_URL = "http://localhost:8000/api/v1";
+
 function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
+
   const renderComponent = () => {
     if (Component.noLayout) {
       return <Component {...pageProps} />;
@@ -62,7 +65,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
           <RefineSnackbarProvider>
             <Refine
               routerProvider={routerProvider}
-              dataProvider={postgresDataProvider(getApiURL())}
+              dataProvider={postgresDataProvider(API_URL)}
               notificationProvider={notificationProvider}
               authProvider={authProvider}
               i18nProvider={i18nProvider}

@@ -3,7 +3,7 @@ node_modules
 # next.js build files
 .next
 # environment variables
-.env
+.env.local
 .idea
 .env.*
 !.env.example
